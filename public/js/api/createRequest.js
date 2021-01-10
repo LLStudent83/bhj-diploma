@@ -7,7 +7,7 @@ const createRequest = (data, callback) => {
   let form = new FormData();
   xhr.responseType = "json";
   xhr.open("GET", "/user/current", true);
-  xhr.send(formData);
+  xhr.send(form);
   xhr.onsuccess = () => {
       callback(null, xhr.response);
     };

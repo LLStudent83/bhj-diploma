@@ -15,7 +15,7 @@ class Modal {
     this.element = element;
     this.registerEvents();
     if (this.element === null) {
-      alert("Ошибка Modal.constructor переданный элемент не существует");// Не уверен в правильности
+      alert("Ошибка Modal.constructor переданный элемент не существует"); // Не уверен в правильности
     }
   }
 
@@ -25,18 +25,16 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    let elemClose = this.element.querySelector(".close");
-    let elemBtnDefault = this.element.querySelector(".btn-default");
-    
+    let elemButt = this.element.querySelectorAll('button[data-dismiss="modal"]');
+    let onCloseFix = this.onClose.bind(this.element);
+
+    for (let i = 0; i < elemButt.length; i++) {
+        elemButt[i].onclick = closeWindow;
+      }
     function closeWindow() {
-      console.log("Сработал обработчик события закрытия окна")
-      //onClose();
+      console.log("Сработал обработчик события закрытия окна" + this);
+      onCloseFix();
     }
-    elemClose.eddEventListener("click", closeWindow);
-    
-    elemBtnDefault.onClick = this.onClose();
-    
-    
   }
 
   /**
@@ -44,13 +42,14 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-    this.close(e);
+    console.log("Сработал onClose" + this);
+    Modal.close();
   }
   /**
    * Удаляет обработчики событий
    * */
   unregisterEvents() {
-removeEventListener("click", closeWindow())
+    removeEventListener("click", closeWindow);
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
