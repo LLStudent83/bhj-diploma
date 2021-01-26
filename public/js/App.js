@@ -50,6 +50,7 @@ class App {
    * Инициализирует всплывающие окна
    * */
   static initModals() {
+    
     this.modals = {
       register: new Modal( document.querySelector( '#modal-register' )),
       login: new Modal( document.querySelector( '#modal-login' )),
@@ -57,6 +58,7 @@ class App {
       newIncome: new Modal( document.querySelector( '#modal-new-income' )),
       newExpense: new Modal( document.querySelector( '#modal-new-expense' )),
     };
+  
   }
 
   /**

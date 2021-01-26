@@ -37,16 +37,17 @@ class Sidebar {
     let elemMenuItemLogin = document.querySelector(".menu-item_login");//элемент кнопки входа
     let elemMenuItemLogout = document.querySelector(".menu-item_logout");//элемент кнопки выхода
     let elemMenuItemRegister = document.querySelector(".menu-item_register");//элемент кнопки регистрации
-
     elemMenuItemLogin.onclick = () => {
-      App.getModal("login").open();//вернет элемент окна входа и применит к нму метод open()
+       App.getModal("login").open();//вернет элемент окна входа и применит к нму метод open()
     };
     elemMenuItemRegister.onclick = () => {
       App.getModal("register").open();
     }
-    elemMenuItemLogout.onclick = () => {
+    elemMenuItemLogout.onclick = () => {  
       User.logout();
-
+      if(response.success = true) {
+        App.setState( 'init' );
+      }
     };
   }
 }

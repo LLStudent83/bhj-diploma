@@ -13,10 +13,11 @@ class Modal {
    * */
   constructor(element) {
     this.element = element;
-    this.registerEvents();
+    this.onClose = this.onClose.bind(this);
     if (this.element === null) {
-      alert("Ошибка Modal.constructor переданный элемент не существует"); // Не уверен в правильности
+      throw "Переданный элемент не существует";
     }
+    this.registerEvents();
   }
 
   /**
@@ -25,15 +26,9 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    let elemButt = this.element.querySelectorAll('button[data-dismiss="modal"]');
-    let onCloseFix = this.onClose.bind(this.element);
-
+    let elemButt = this.element.querySelectorAll('[data-dismiss="modal"]');
     for (let i = 0; i < elemButt.length; i++) {
-        elemButt[i].onclick = closeWindow;
-      }
-    function closeWindow() {
-      console.log("Сработал обработчик события закрытия окна" + this);
-      onCloseFix();
+      elemButt[i].addEventListener("click", this.onClose)
     }
   }
 
@@ -42,14 +37,18 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-    console.log("Сработал onClose" + this);
-    Modal.close();
+    this.close();
+    
   }
   /**
    * Удаляет обработчики событий
    * */
   unregisterEvents() {
-    removeEventListener("click", closeWindow);
+    let elemButt = this.element.querySelectorAll('[data-dismiss="modal"]');
+
+    for (let i = 0; i < elemButt.length; i++) {
+      elemButt[i].removeEventListener("click", this.onClose);
+    }
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
