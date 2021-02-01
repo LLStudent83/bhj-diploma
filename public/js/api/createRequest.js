@@ -11,27 +11,8 @@ const createRequest = (data = {}, metod, URL, callback) => {
     console.log("печатаю боди ", body);
     try {
       xhr.open(metod, URL + body, true);
-      xhr.send();
-    } catch {
-      // перехват сетевой ошибки
-      callback(e);
-    }
-  } else {
-    let form = new FormData();
-    form.append("name", data.name);
-    form.append("mail", data.email);
-    form.append("password", data.password);
-
-    try {
-      xhr.open(metod, User.URL, true);
-      xhr.send(form);
-    } catch (e) {
-      // перехват сетевой ошибки
-      callback(e);
-    }
-  }
-
-  xhr.onsuccess = () => {
+      //event.preventDefault();
+      xhr.onsuccess = () => {
     callback(null, xhr.response);
     console.log("Печатаем xhr успех", xhr);
   };
@@ -39,25 +20,40 @@ const createRequest = (data = {}, metod, URL, callback) => {
     callback(err, xhr.response);
     console.log("Печатаем xhr ошибка", xhr);
   };
+      xhr.send();
+      
+    } catch {
+      // перехват сетевой ошибки
+      callback(e);
+    }
+  } else {
+    let form = new FormData();
+    form.append("name", data.name);
+    form.append("email", data.email);
+    form.append("password", data.password);
 
+    try {
+      xhr.open(metod, User.URL, true);
+      xhr.onsuccess = () => {
+        callback(null, xhr.response);
+        console.log("Печатаем xhr успех", xhr);
+      };
+      xhr.onerror = () => {
+        callback(err, xhr.response);
+        console.log("Печатаем xhr ошибка", xhr);
+      };
+      xhr.send(form);
+    } catch (e) {
+      // перехват сетевой ошибки
+      callback(e);
+    }
+  }
+
+  
+  console.log("Печатаем xhr перед ретёрн", xhr)
   return xhr;
 };
 
-/* const createRequest = (data, callback) => {
-  const xhr = new XMLHttpRequest();
-  let form = new FormData();
-  xhr.responseType = "json";
-  xhr.open("GET", "/user/current", true);
-  xhr.send(form);
-  xhr.onsuccess = () => {
-      callback(null, xhr.response);
-    };
-  xhr.onerror = () => {
-    callback(err, xhr.response);
-  };
-    console.log("Печатаем xhr", xhr);
-    return xhr;
-  };*/
 
 /*createRequest({
         url: 'https://example.com', // адрес

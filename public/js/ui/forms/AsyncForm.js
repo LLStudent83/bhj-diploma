@@ -18,7 +18,9 @@ class AsyncForm {
     if(this.element === null){
       throw "переданый элемент не существует";
     }
-    this.registerEvents;
+    
+    //this.getData();
+    this.registerEvents();
   }
 
   /**
@@ -26,8 +28,8 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    event.preventDefault().
-    this.element.addEventListener("submit", this.submit )
+    this.element.addEventListener("submit", this.submit );
+    
   }
 
   /**
@@ -40,7 +42,13 @@ class AsyncForm {
   getData() {
 let formData = new FormData(this.element)
 console.log("Гет Дата", formData)
-return formData
+let data = {};
+for(let [name, value] of formData){
+  data.name = value;
+  
+}
+console.log("печатаю data из getData" ,data);
+return data;
   }
 
   onSubmit( options ) {
@@ -52,6 +60,8 @@ return formData
    * данные, полученные из метода getData()
    * */
   submit() {
-this.onSubmit(getData())
+    event.preventDefault();
+    console.log("this в submit", this);
+    this.onSubmit(this.getData());
   }
 }
