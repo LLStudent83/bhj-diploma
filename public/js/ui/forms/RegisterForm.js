@@ -10,15 +10,13 @@ class RegisterForm extends AsyncForm {
    * состояние App.setState( 'user-logged' )
    * и закрывает окно, в котором находится форма
    * */
-  onSubmit( options ) {
-    User.register(options);
-if (User.current()) {
-  App.setState( 'user-logged' )
-}
-  
-
-
-
-    Modal.close()
+  onSubmit(data) {
+    User.register(data, () => {
+      if (xhr.response.success) {
+        this.element.reset();//сбрасывает форму
+        App.setState("user-logged");
+        this.сlose(); // пока не работает
+      }
+    });
   }
 }

@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "name": "demo",
-      "email": "demo@demo",
-      "password": "demo",
-      "id": "1",
-      "isAuthorized": false
+      "name": "Дмитрий Пригульнов",
+      "email": "prigulnovda@rpm-group.ru",
+      "password": "123",
+      "id": "18jz9sfaokl53zxjq",
+      "isAuthorized": true
     }
   ],
   "accounts": [

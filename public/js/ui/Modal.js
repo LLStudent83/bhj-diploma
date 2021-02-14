@@ -61,6 +61,7 @@ class Modal {
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close() {
+  
     this.element.removeAttribute("style");
   }
 }
