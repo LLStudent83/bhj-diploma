@@ -6,8 +6,6 @@ const createRequest = (data = {}, metod, URL, callback) => {
   const xhr = new XMLHttpRequest();
   xhr.responseType = "json";
   if (metod === "GET") {
-    console.log("data из createRequest ", data);
-    
     URL += "?";
     for(let key in data) {
       URL += `${key}=${data[key]}&`

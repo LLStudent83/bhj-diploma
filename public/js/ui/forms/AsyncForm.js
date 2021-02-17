@@ -12,10 +12,9 @@ class AsyncForm {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  constructor( element ) {
-    
+  constructor(element) {
     this.element = element;
-    if(this.element === null){
+    if (this.element === null) {
       throw "переданый элемент не существует";
     }
     this.registerEvents();
@@ -27,8 +26,7 @@ class AsyncForm {
    * */
   registerEvents() {
     let submit = this.submit.bind(this);
-    this.element.addEventListener("submit", submit );
-    
+    this.element.addEventListener("submit", submit);
   }
 
   /**
@@ -39,19 +37,16 @@ class AsyncForm {
    * }
    * */
   getData() {
-let formData = new FormData(this.element)
-let entries = formData.entries();
-let data = {};
-for(let item of entries){
-  data[item[ 0 ]] = item[ 1 ];
-}
-console.log("печатаю data из getData" ,data);
-return data;
+    let formData = new FormData(this.element);
+    let entries = formData.entries();
+    let data = {};
+    for (let item of entries) {
+      data[item[0]] = item[1];
+    }
+    return data;
   }
 
-  onSubmit( options ) {
-
-  }
+  onSubmit(options) {}
 
   /**
    * Вызывает метод onSubmit и передаёт туда

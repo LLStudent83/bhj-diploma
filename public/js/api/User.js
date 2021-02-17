@@ -10,7 +10,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-    localStorage.setItem("data", user); //user = { id: 12, name: 'Vlad'};
+    localStorage.setItem("user", JSON.stringify(user)); //user = { id: 12, name: 'Vlad'};
   }
 
   /**
@@ -18,7 +18,7 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
-    localStorage.removeItem("data");
+    localStorage.removeItem("user");
   }
 
   /**
@@ -26,7 +26,8 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    localStorage.getItem("data");
+    let user = JSON.parse(localStorage.getItem("user"));
+    return user;
   }
 
   /**
@@ -35,7 +36,6 @@ class User {
    * */
   static fetch(data, callback = (f) => f) {
     let xhr = createRequest(data, "GET", User.URL + "/current", () => {
-      console.log("xhr из createRequest в fetch ", xhr.response);
       if (xhr.response.success) {
         let user = {
           id: xhr.response.user.id,
@@ -59,14 +59,16 @@ class User {
    * */
   static login(data, callback = (f) => f) {
     // data = {email: 'test@test.ru', password: 'abracadabra'}
-    let xhr = createRequest(data, "POST", User.URL + "/login", () => {
+    let xhr = createRequest(data, "POST", User.URL + "/login", (err, response) => {
       if (xhr.response.success) {
-        console.log("Печатаем xhr успех из User.Login", xhr);
         let user = {
           id: xhr.response.user.id,
           name: xhr.response.user.name,
         };
         User.setCurrent(user);
+        callback(response);
+      }else {
+        throw response.error;
       }
     });
   }
@@ -79,24 +81,31 @@ class User {
    * */
   static register(data, callback) {
     //data = {name: 'Vlad', email: 'test@test.ru', password: 'abracadabra'}
-    let xhr = createRequest(data, "POST", User.URL + "/register", () => {
-      if (xhr.response.success) {
+    let xhr = createRequest(data, "POST", User.URL + "/register", (err, response) => {
+      if (response.success) {
         let user = {
           id: xhr.response.user.id,
           name: xhr.response.user.name,
         };
         User.setCurrent(user);
-        callback(xhr.response)
-        // if (xhr.status === 200) {
-        //   callback(xhr.response);
-        // }
+        callback(response)
+      }else {
+        
+        throw response.error;
       }
     });
-  }
+  };
 
   /**
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout(data, callback = (f) => f) {}
+  static logout(data, callback = (f) => f) {
+    let xhr = createRequest(data, "POST", User.URL + '/logout', (err, response) => {
+      if(response.success) {
+        User.unsetCurrent();
+        callback(response);
+      }
+    })
+  }
 }
