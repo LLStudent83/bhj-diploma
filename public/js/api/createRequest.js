@@ -4,36 +4,34 @@
  * */
 const createRequest = (data = {}, metod, URL, callback) => {
   const xhr = new XMLHttpRequest();
+  let form = new FormData();
   xhr.responseType = "json";
   if (metod === "GET") {
     URL += "?";
     for(let key in data) {
       URL += `${key}=${data[key]}&`
     }
-    
-
-    //let body = "email=" + data.email + "&password=" + data.password;
     try {
       xhr.open(metod, URL, true);
-      //event.preventDefault();
       xhr.onload = () => {
         callback(null, xhr.response);
       };
-      xhr.onerror = () => {
+      xhr.onerror = (err) => {
         callback(err, xhr.response);
-        console.log("Печатаем xhr ошибка", xhr);
+        console.log("Печатаем xhr ошибка", err);
       };
-      xhr.send();
     } catch {
       // перехват сетевой ошибки
       callback(e);
     }
   } else {
-    let form = new FormData();
-    form.append("name", data.name);
-    form.append("email", data.email);
-    form.append("password", data.password);
-
+    
+    // form.append("name", data.name);
+    // form.append("email", data.email);
+    // form.append("password", data.password);
+for(let key in data) {
+  form.append(key, data[key]);
+}
     try {
       xhr.open(metod, URL, true);
       xhr.onload = () => {
@@ -44,12 +42,15 @@ const createRequest = (data = {}, metod, URL, callback) => {
       xhr.onerror = () => {
         callback(err, xhr.response);
       };
-      xhr.send(form);
 
     } catch (e) {
       // перехват сетевой ошибки
       callback(e);
     }
   }
-  return xhr;
+  xhr.send(metod !== "GET" && form)
+  //xhr.send(metod !== "GET" ? form : null)
+  //metod === "GET" ? xhr.send() : xhr.send(form);
+  //xhr.send(form);
+  //return xhr;
 };

@@ -35,20 +35,24 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(data, callback = (f) => f) {
-    let xhr = createRequest(data, "GET", User.URL + "/current", () => {
-      if (xhr.response.success) {
+    createRequest(data, "GET", User.URL + "/current", (err, response) => {
+      if (response === null) {
+        alert("response d User.Fetch равен noll");
+        return;
+      }
+      if (response.success) {
         let user = {
-          id: xhr.response.user.id,
-          name: xhr.response.user.name,
+          id: response.user.id,
+          name: response.user.name,
         };
         User.setCurrent(user);
       }
-      if (!xhr.response.success) {
+      if (!response.success) {
         User.unsetCurrent();
+        alert(response.error);
       }
+      callback(); //Вызываю callback который находится в методе App.initUser
     });
-
-    callback(); //Вызываю callback который находится в методе App.initUser
   }
 
   /**
@@ -59,17 +63,17 @@ class User {
    * */
   static login(data, callback = (f) => f) {
     // data = {email: 'test@test.ru', password: 'abracadabra'}
-    let xhr = createRequest(data, "POST", User.URL + "/login", (err, response) => {
-      if (xhr.response.success) {
+    createRequest(data, "POST", User.URL + "/login", (err, response) => {
+      if (response.success) {
         let user = {
-          id: xhr.response.user.id,
-          name: xhr.response.user.name,
+          id: response.user.id,
+          name: response.user.name,
         };
         User.setCurrent(user);
-        callback(response);
-      }else {
-        throw response.error;
+      } else {
+        alert(response.error)
       }
+      callback(response);
     });
   }
 
@@ -81,31 +85,35 @@ class User {
    * */
   static register(data, callback) {
     //data = {name: 'Vlad', email: 'test@test.ru', password: 'abracadabra'}
-    let xhr = createRequest(data, "POST", User.URL + "/register", (err, response) => {
+    createRequest(data, "POST", User.URL + "/register", (err, response) => {
       if (response.success) {
         let user = {
-          id: xhr.response.user.id,
-          name: xhr.response.user.name,
+          id: response.user.id,
+          name: response.user.name,
         };
         User.setCurrent(user);
-        callback(response)
-      }else {
-        
+        callback(response);
+      } else {
         throw response.error;
       }
     });
-  };
+  }
 
   /**
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
   static logout(data, callback = (f) => f) {
-    let xhr = createRequest(data, "POST", User.URL + '/logout', (err, response) => {
-      if(response.success) {
-        User.unsetCurrent();
-        callback(response);
+    let xhr = createRequest(
+      data,
+      "POST",
+      User.URL + "/logout",
+      (err, response) => {
+        if (response.success) {
+          User.unsetCurrent();
+          callback(response);
+        }
       }
-    })
+    );
   }
 }

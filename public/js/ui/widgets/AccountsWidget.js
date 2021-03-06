@@ -12,8 +12,14 @@ class AccountsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
-
+  constructor(element) {
+    if (!element) {
+      throw new Error("Переданный элемент не существует");
+    }
+    this.element = element; // ul.sidebar-menu accounts-panel (панель со счетами);
+    //this.elemScore = document.querySelectorAll(".account");
+    this.update();
+    //this.registerEvents();
   }
 
   /**
@@ -24,7 +30,18 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
+    let elemNewAccount = this.element.querySelector(".create-account");
+    let bindOnSelectAccount = this.onSelectAccount.bind(this);
 
+    this.element.addEventListener("click", (event) => {
+      if (event.target === elemNewAccount) {
+        App.getModal("createAccount").open();
+      } else {
+        //console.log("Меня кликнули", event);
+
+        bindOnSelectAccount(event.target);
+      }
+    });
   }
 
   /**
@@ -38,7 +55,17 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    if (User.current()) {
+      Account.list(User.current(), (response) => {
+        if (response.success) {
+          this.clear();
+          for (let item of response.data) {
+            this.renderItem(item);
+          }
+        }
+      });
+    }
+    this.registerEvents();
   }
 
   /**
@@ -47,9 +74,13 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
-
+    let elemScore = document.querySelectorAll(".account");
+    if (elemScore.length > 0) {
+      for (let i = 0; i < elemScore.length; i++) {
+        elemScore[i].remove();
+      }
+    }
   }
-
   /**
    * Срабатывает в момент выбора счёта
    * Устанавливает текущему выбранному элементу счёта
@@ -57,8 +88,20 @@ class AccountsWidget {
    * счёта класс .active.
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
-  onSelectAccount( element ) {
+  onSelectAccount(element) {
+    // element это элемент счета по которому кликнули
 
+    if (this.element.querySelector(".active")) {
+      this.element.querySelector(".active").classList.remove("active");
+      element.closest(".account").classList.add("active");
+    } else {
+      element.closest(".account").classList.add("active");
+    }
+
+    let option = {
+      account_id:element.closest(".account").getAttribute("data-id"),// account_id или id
+    };
+    App.showPage("transactions", option);
   }
 
   /**
@@ -66,8 +109,16 @@ class AccountsWidget {
    * отображения в боковой колонке.
    * item - объект с данными о счёте
    * */
-  getAccountHTML( item ) {
-
+  getAccountHTML(item) {
+    let html = `
+<li class="account" data-id=${item.id}>
+    <a href="#">
+        <span>${item.name}</span> 
+        <span>${item.sum} ₽</span>
+    </a>
+</li>
+`;
+    return html;
   }
 
   /**
@@ -76,7 +127,7 @@ class AccountsWidget {
    * AccountsWidget.getAccountHTML HTML-код элемента
    * и добавляет его внутрь элемента виджета
    * */
-  renderItem( item ) {
-
+  renderItem(item) {
+    this.element.insertAdjacentHTML("afterBegin", this.getAccountHTML(item));
   }
 }
