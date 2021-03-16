@@ -15,8 +15,8 @@ class AsyncForm {
   constructor(element) {
     this.element = element;
     if (!this.element) {
-      //throw new 
-      //"переданый элемент не существует";
+      throw new Error("переданый в AsyncForm элемент не существует")
+      
     }
     this.registerEvents();
   }
@@ -54,6 +54,7 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
+    event.preventDefault // не знаю нужно или нет
     this.onSubmit(this.getData());
   }
 }

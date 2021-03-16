@@ -56,7 +56,7 @@ class App {
       login: new Modal( document.querySelector( '#modal-login' )),
       createAccount: new Modal( document.querySelector( '#modal-new-account' )),
       newIncome: new Modal( document.querySelector( '#modal-new-income' )),
-      newExpense: new Modal( document.querySelector( '#modal-new-expense' )),
+      newExpense: new Modal( document.querySelector( '#modal-new-expense' )), // форма расхода
     };
   
   }

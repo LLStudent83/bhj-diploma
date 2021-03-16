@@ -19,7 +19,7 @@ class AccountsWidget {
     this.element = element; // ul.sidebar-menu accounts-panel (панель со счетами);
     //this.elemScore = document.querySelectorAll(".account");
     this.update();
-    //this.registerEvents();
+    this.registerEvents();
   }
 
   /**
@@ -65,7 +65,7 @@ class AccountsWidget {
         }
       });
     }
-    this.registerEvents();
+    //this.registerEvents();
   }
 
   /**
@@ -98,10 +98,10 @@ class AccountsWidget {
       element.closest(".account").classList.add("active");
     }
 
-    let option = {
-      account_id:element.closest(".account").getAttribute("data-id"),// account_id или id
-    };
-    App.showPage("transactions", option);
+    App.showPage(
+      "transactions",
+      element.closest(".account").getAttribute("data-id")
+    );
   }
 
   /**
@@ -128,6 +128,6 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(item) {
-    this.element.insertAdjacentHTML("afterBegin", this.getAccountHTML(item));
+    this.element.insertAdjacentHTML("beforeEnd", this.getAccountHTML(item));
   }
 }

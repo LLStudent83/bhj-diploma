@@ -10,7 +10,8 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static list(data, callback = (f) => f) {
-    //data {mail:, password}
+    //data = User.current();
+
     createRequest(data, "GET", this.URL, (err, response) => {
       callback(response);
       if (!response.success) {
@@ -26,7 +27,6 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create(data, callback = (f) => f) {
-
     let modifiedData = Object.assign({ _method: "PUT" }, data);
 
     createRequest(modifiedData, "POST", this.URL, (err, response) => {
@@ -41,26 +41,26 @@ class Entity {
    * Получает информацию о счёте или доходе/расходе
    * (в зависимости от того, что наследуется от Entity)
    * */
-  static get(id = "", data, callback = (f) => f) { //id счета, data 
-    let modifiedData = Object.assign(data, id);
+  static get(id = "", data, callback = (f) => f) {
+    //id счета, data
+    //let modifiedData = Object.assign(id, {});
 
     //createRequest(id, "GET", "/account?18jz9sc68klkzsknk&", (err, response) => { //"/account?account_id=18jz9sc68klkzsknk&"
-    createRequest(modifiedData, "GET", this.URL, (err, response) => {
-    callback(id, response);
+    createRequest(id, "GET", this.URL, (err, response) => {
+      callback(response);
       if (!response.success) {
         alert(`error: ${err}, ошибка ${response}`);
       }
     });
   }
 
-
   /**
    * Удаляет информацию о счёте или доходе/расходе
    * (в зависимости от того, что наследуется от Entity)
    * */
   static remove(id = "", data, callback = (f) => f) {
-    let modifiedData = Object.assign({ _method: "PUT", "id": id }, data);
-
+    let modifiedData = Object.assign({ _method: "DELETE", id: id }, data); //{ mail: 'ivan@biz.pro', _method: 'DELETE', id: 21 }
+    modifiedData.id = id;
     createRequest(modifiedData, "POST", this.URL, (err, response) => {
       callback(response);
       if (!response.success) {

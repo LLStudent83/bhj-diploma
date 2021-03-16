@@ -7,9 +7,13 @@ const createRequest = (data = {}, metod, URL, callback) => {
   let form = new FormData();
   xhr.responseType = "json";
   if (metod === "GET") {
-    URL += "?";
-    for(let key in data) {
-      URL += `${key}=${data[key]}&`
+    if (typeof data === "string") {
+      URL += "/" + data;
+    } else {
+      URL += "?";
+      for (let key in data) {
+        URL += `${key}=${data[key]}&`;
+      }
     }
     try {
       xhr.open(metod, URL, true);
@@ -25,13 +29,12 @@ const createRequest = (data = {}, metod, URL, callback) => {
       callback(e);
     }
   } else {
-    
     // form.append("name", data.name);
     // form.append("email", data.email);
     // form.append("password", data.password);
-for(let key in data) {
-  form.append(key, data[key]);
-}
+    for (let key in data) {
+      form.append(key, data[key]);
+    }
     try {
       xhr.open(metod, URL, true);
       xhr.onload = () => {
@@ -42,13 +45,12 @@ for(let key in data) {
       xhr.onerror = () => {
         callback(err, xhr.response);
       };
-
     } catch (e) {
       // перехват сетевой ошибки
       callback(e);
     }
   }
-  xhr.send(metod !== "GET" && form)
+  xhr.send(metod !== "GET" && form);
   //xhr.send(metod !== "GET" ? form : null)
   //metod === "GET" ? xhr.send() : xhr.send(form);
   //xhr.send(form);
