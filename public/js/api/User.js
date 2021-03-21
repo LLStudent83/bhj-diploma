@@ -37,7 +37,7 @@ class User {
   static fetch(data, callback = (f) => f) {
     createRequest(data, "GET", User.URL + "/current", (err, response) => {
       if (response === null) {
-        alert("response d User.Fetch равен noll");
+        alert("response User.Fetch равен noll");
         return;
       }
       if (response.success) {
@@ -49,7 +49,7 @@ class User {
       }
       if (!response.success) {
         User.unsetCurrent();
-        alert(response.error);
+        throw (response.error);
       }
       callback(); //Вызываю callback который находится в методе App.initUser
     });
@@ -71,7 +71,7 @@ class User {
         };
         User.setCurrent(user);
       } else {
-        alert(response.error)
+        alert(response.error, "ошибка из login")
       }
       callback(response);
     });

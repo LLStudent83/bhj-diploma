@@ -1,3 +1,5 @@
+
+
 /**
  * Класс TransactionsPage управляет
  * страницей отображения доходов и
@@ -18,10 +20,13 @@ class TransactionsPage {
     }
     this.element = element;
     this.registerEvents();
+    
   }
 
   /**
    * Вызывает метод render для отрисовки страницы
+   * В случае, если метод render() был ранее вызван с какими-то опциями, 
+   * при вызове update() эти опции необходимо передать повторно
    * */
   update() {
     this.render(this.lastOptions);
@@ -107,8 +112,9 @@ class TransactionsPage {
       return;
     }
     this.lastOptions = options;
-
+    this.renderTransactions([]); // что бы не задваивал транзакции на странице
     Account.get(options, {}, (response) => {
+      
       this.renderTitle(response.data.name);
     });
     let data = { account_id: options };
@@ -125,14 +131,16 @@ class TransactionsPage {
   clear() {
     this.renderTransactions([]);
     this.renderTitle("Название счёта");
-    this.lastOptions = null;
+    //this.lastOptions = null;
   }
 
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name) {
+    
     let elementNameScore = document.querySelector(".content-title");
+    name === undefined? name = "Название счёта" : name = name;
     elementNameScore.textContent = name;
   }
 

@@ -91,17 +91,25 @@ class AccountsWidget {
   onSelectAccount(element) {
     // element это элемент счета по которому кликнули
 
-    if (this.element.querySelector(".active")) {
+    if ((this.element.querySelector(".active")) && (element.closest(".active"))) {
+      return;
+    } else if ((this.element.querySelector(".active")) && !(element.closest(".active"))) {
       this.element.querySelector(".active").classList.remove("active");
       element.closest(".account").classList.add("active");
+      App.clear();
+      App.showPage(
+      "transactions",
+      element.closest(".account").getAttribute("data-id"))
     } else {
       element.closest(".account").classList.add("active");
-    }
-
-    App.showPage(
+      App.clear();
+      App.showPage(
       "transactions",
-      element.closest(".account").getAttribute("data-id")
-    );
+      element.closest(".account").getAttribute("data-id"));
+    }
+    
+    
+    
   }
 
   /**

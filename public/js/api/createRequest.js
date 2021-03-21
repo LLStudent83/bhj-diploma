@@ -29,9 +29,7 @@ const createRequest = (data = {}, metod, URL, callback) => {
       callback(e);
     }
   } else {
-    // form.append("name", data.name);
-    // form.append("email", data.email);
-    // form.append("password", data.password);
+    
     for (let key in data) {
       form.append(key, data[key]);
     }

@@ -10,9 +10,19 @@
   ],
   "accounts": [
     {
-      "name": "Мой новый счет",
+      "name": "Коплю на машину",
       "user_id": "18jz9s8jgklewxpn0",
-      "id": "18jz9sjoskmc3layk"
+      "id": "18jz9skxckmhlal7d"
+    },
+    {
+      "name": "мой счет",
+      "user_id": "18jz9s8jgklewxpn0",
+      "id": "18jz9sn6wkmhlwvm7"
+    },
+    {
+      "name": "Семейный бюджет",
+      "user_id": "18jz9s8jgklewxpn0",
+      "id": "18jz9s2lokmhvbg88"
     }
   ],
   "transactions": [
@@ -471,6 +481,238 @@
       "sum": 100,
       "account_id": "18jz9sidckmapv3a4",
       "created_at": "2021-03-15T16:56:03.400Z"
+    },
+    {
+      "id": "18jz9she0kmf267j4",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sjoskmc3layk",
+      "created_at": "2021-03-18T15:58:54.879Z"
+    },
+    {
+      "id": "18jz9sj48kmf272wa",
+      "type": "EXPENSE",
+      "name": "комуналка",
+      "sum": 1,
+      "account_id": "18jz9sjoskmc3layk",
+      "created_at": "2021-03-18T15:59:35.529Z"
+    },
+    {
+      "id": "18jz9s4j8kmf310sb",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 1000,
+      "account_id": "18jz9s6sskmf29b5l",
+      "created_at": "2021-03-18T16:22:52.474Z"
+    },
+    {
+      "id": "18jz9sangkmf31wj7",
+      "type": "EXPENSE",
+      "name": "комуналка",
+      "sum": 100,
+      "account_id": "18jz9s6sskmf29b5l",
+      "created_at": "2021-03-18T16:23:33.618Z"
+    },
+    {
+      "id": "18jz9scvckmf32lml",
+      "type": "EXPENSE",
+      "name": "мой счет",
+      "sum": 1000,
+      "account_id": "18jz9s6sskmf29b5l",
+      "created_at": "2021-03-18T16:24:06.140Z"
+    },
+    {
+      "id": "18jz9s95okmf330sb",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sas0kmc7g406",
+      "created_at": "2021-03-18T16:24:25.786Z"
+    },
+    {
+      "id": "18jz9sag8kmf340hm",
+      "type": "EXPENSE",
+      "name": "Зарплата",
+      "sum": 1000,
+      "account_id": "18jz9s6sskmf29b5l",
+      "created_at": "2021-03-18T16:25:12.057Z"
+    },
+    {
+      "id": "18jz9s8ygkmf367vi",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 10000,
+      "account_id": "18jz9sas0kmc7g406",
+      "created_at": "2021-03-18T16:26:54.941Z"
+    },
+    {
+      "id": "18jz9se68kmf36qu2",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sb8kkmf290xh",
+      "created_at": "2021-03-18T16:27:19.513Z"
+    },
+    {
+      "id": "18jz9sj74kmhioqpu",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sb8kkmf290xh",
+      "created_at": "2021-03-20T09:16:45.761Z"
+    },
+    {
+      "id": "18jz9s4mgkmhir1nw",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sb8kkmf290xh",
+      "created_at": "2021-03-20T09:18:33.259Z"
+    },
+    {
+      "id": "18jz9shykkmhirx40",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sjz8kmhiromg",
+      "created_at": "2021-03-20T09:19:14.015Z"
+    },
+    {
+      "id": "18jz9sa38kmhisamk",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 1000,
+      "account_id": "18jz9sjz8kmhiromg",
+      "created_at": "2021-03-20T09:19:31.531Z"
+    },
+    {
+      "id": "18jz9sh5skmhk5iy9",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 1000,
+      "account_id": "18jz9s5xckmhk2khz",
+      "created_at": "2021-03-20T09:57:48.464Z"
+    },
+    {
+      "id": "18jz9s368kmhk6xj7",
+      "type": "EXPENSE",
+      "name": "комуналка",
+      "sum": 100,
+      "account_id": "18jz9s5xckmhk2khz",
+      "created_at": "2021-03-20T09:58:54.018Z"
+    },
+    {
+      "id": "18jz9s8hskmhl7voh",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s5xckmhk2khz",
+      "created_at": "2021-03-20T10:27:37.888Z"
+    },
+    {
+      "id": "18jz9sksskmhlx35a",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 10000,
+      "account_id": "18jz9sn6wkmhlwvm7",
+      "created_at": "2021-03-20T10:47:13.965Z"
+    },
+    {
+      "id": "18jz9slmckmhnlufj",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T11:34:28.686Z"
+    },
+    {
+      "id": "18jz9sn8okmhoohke",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9skxckmhlal7d",
+      "created_at": "2021-03-20T12:04:31.597Z"
+    },
+    {
+      "id": "18jz9snvkkmhp3r15",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sn6wkmhlwvm7",
+      "created_at": "2021-03-20T12:16:23.704Z"
+    },
+    {
+      "id": "18jz9sfmkkmhqj8py",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T12:56:26.085Z"
+    },
+    {
+      "id": "18jz9sjq8kmhqyikt",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T13:08:18.700Z"
+    },
+    {
+      "id": "18jz9slcckmhrhlwm",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sn6wkmhlwvm7",
+      "created_at": "2021-03-20T13:23:09.477Z"
+    },
+    {
+      "id": "18jz9sll0kmhrnfou",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T13:27:41.357Z"
+    },
+    {
+      "id": "18jz9sf4wkmhrntff",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T13:27:59.162Z"
+    },
+    {
+      "id": "18jz9s6ickmhro31i",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 3,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T13:28:11.621Z"
+    },
+    {
+      "id": "18jz9s2ickmhroxri",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s8zskmhlabg1",
+      "created_at": "2021-03-20T13:28:51.437Z"
+    },
+    {
+      "id": "18jz9sjm8kmio2edw",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-21T04:35:07.219Z"
+    },
+    {
+      "id": "18jz9sbkgkmiotp9y",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9skxckmhlal7d",
+      "created_at": "2021-03-21T04:56:21.045Z"
     }
   ]
 }
