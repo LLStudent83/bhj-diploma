@@ -17,7 +17,6 @@ class AccountsWidget {
       throw new Error("Переданный элемент не существует");
     }
     this.element = element; // ul.sidebar-menu accounts-panel (панель со счетами);
-    //this.elemScore = document.querySelectorAll(".account");
     this.update();
     this.registerEvents();
   }
@@ -91,25 +90,27 @@ class AccountsWidget {
   onSelectAccount(element) {
     // element это элемент счета по которому кликнули
 
-    if ((this.element.querySelector(".active")) && (element.closest(".active"))) {
+    if (this.element.querySelector(".active") && element.closest(".active")) {
       return;
-    } else if ((this.element.querySelector(".active")) && !(element.closest(".active"))) {
+    } else if (
+      this.element.querySelector(".active") &&
+      !element.closest(".active")
+    ) {
       this.element.querySelector(".active").classList.remove("active");
       element.closest(".account").classList.add("active");
       App.clear();
       App.showPage(
-      "transactions",
-      element.closest(".account").getAttribute("data-id"))
+        "transactions",
+        element.closest(".account").getAttribute("data-id")
+      );
     } else {
       element.closest(".account").classList.add("active");
       App.clear();
       App.showPage(
-      "transactions",
-      element.closest(".account").getAttribute("data-id"));
+        "transactions",
+        element.closest(".account").getAttribute("data-id")
+      );
     }
-    
-    
-    
   }
 
   /**

@@ -19,7 +19,18 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     Account.list(User.current(), (response) => {
-      if (this.element === document.querySelector("#new-income-form")) {
+      let elemAccountsList = this.element.querySelector("select");
+      let html;
+
+      elemAccountsList.innerHTML = "";
+      for (let item of response.data) {
+        html = html + `<option value="${item.id}">${item.name}</option>`;
+      }
+      elemAccountsList.insertAdjacentHTML("beforeEnd", html);
+    });
+
+    /*Account.list(User.current(), (response) => {
+      if (this.element === document.querySelector("#new-income-form")) { //  доход
         document.querySelector("#income-accounts-list").innerHTML = "";
         for (let item of response.data) {
           let html = `<option value="${item.id}">${item.name}</option>`;
@@ -38,7 +49,7 @@ class CreateTransactionForm extends AsyncForm {
           elemAccountsList.insertAdjacentHTML("beforeEnd", html);
         }
       }
-    });
+    });*/
   }
 
   /**

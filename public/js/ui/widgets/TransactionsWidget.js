@@ -12,9 +12,7 @@ class TransactionsWidget {
    * */
   constructor(element) {
     if (!element) {
-      return new Error(
-        `Преданный элемент в класс TransactionsWidget не существует`
-      );
+      throw new Error("переданый в TransactionsWidget элемент не существует")
     }
     this.element = element;
     this.registerEvents();

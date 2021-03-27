@@ -26,8 +26,8 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    let submit = this.submit.bind(this);
-    this.element.addEventListener("submit", submit);
+    //let submit = this.submit.bind(this);
+    this.element.addEventListener("submit", (event) => this.submit(event));
   }
 
   /**
@@ -53,8 +53,8 @@ class AsyncForm {
    * Вызывает метод onSubmit и передаёт туда
    * данные, полученные из метода getData()
    * */
-  submit() {
-    event.preventDefault // не знаю нужно или нет
+  submit(event) {
+    event.preventDefault();
     this.onSubmit(this.getData());
   }
 }

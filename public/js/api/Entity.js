@@ -28,7 +28,6 @@ class Entity {
    * */
   static create(data, callback = (f) => f) {
     let modifiedData = Object.assign({ _method: "PUT" }, data);
-    //App.getPage( 'transactions' ).lastOptions = data.account_id;// может и не нужно
     createRequest(modifiedData, "POST", this.URL, (err, response) => {
       callback(response);
       if (!response.success) {
@@ -42,10 +41,6 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static get(id = "", data, callback = (f) => f) {
-    //id счета, data
-    //let modifiedData = Object.assign(id, {});
-
-    //createRequest(id, "GET", "/account?18jz9sc68klkzsknk&", (err, response) => { //"/account?account_id=18jz9sc68klkzsknk&"
     createRequest(id, "GET", this.URL, (err, response) => {
       callback(response);
       if (!response.success) {

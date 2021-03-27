@@ -1,11 +1,10 @@
-
-
 /**
  * Класс TransactionsPage управляет
  * страницей отображения доходов и
  * расходов конкретного счёта
  * */
 class TransactionsPage {
+  //static lastOptions;
   /**
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
@@ -14,22 +13,20 @@ class TransactionsPage {
    * */
   constructor(element) {
     if (!element) {
-      return new Error(
-        `Преданный элемент в класс TransactionsPage не существует`
-      );
+      throw new Error("переданый в AsyncForm элемент не существует")
     }
     this.element = element;
     this.registerEvents();
-    
   }
 
   /**
    * Вызывает метод render для отрисовки страницы
-   * В случае, если метод render() был ранее вызван с какими-то опциями, 
+   * В случае, если метод render() был ранее вызван с какими-то опциями,
    * при вызове update() эти опции необходимо передать повторно
    * */
   update() {
     this.render(this.lastOptions);
+    //this.render(TransactionsPage.lastOptions);
   }
 
   /**
@@ -39,19 +36,19 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    let removeAccount = this.removeAccount.bind(this);
-    let removeTransaction = this.removeTransaction.bind(this);
-
     let elementWrapper = document.querySelector(".content-wrapper");
     elementWrapper.addEventListener("click", (event) => {
-      if (event.srcElement.closest(".remove-account")) {
+      if (event.target.closest(".remove-account")) {
         // удаление счета
         this.removeAccount();
         console.log("кликнули удалить счет");
       }
-      if (event.srcElement.closest(".transaction__remove")) {
+
+      if (event.target.closest(".transaction__remove")) {
         console.log("Сработала кнопка удаления тракзакции");
-        let id = event.srcElement.closest(".transaction__remove").getAttribute("data-id");
+        let id = event.target
+          .closest(".transaction__remove")
+          .getAttribute("data-id");
         this.removeTransaction(id);
       }
     });
@@ -90,15 +87,15 @@ class TransactionsPage {
    * */
   removeTransaction(id) {
     let message = confirm("Вы действительно хотите удалить транзакцию?");
-      if (message) {
-        Transaction.remove(id, User.current(), (response) => {
-          if (response.success) {
-            App.update();
-          }
-      })
+    if (message) {
+      Transaction.remove(id, User.current(), (response) => {
+        if (response.success) {
+          App.update();
+        }
+      });
+    }
   }
-}
-//<button class="btn btn-danger transaction__remove" data-id="18jz9sc2ckmc3loze">
+  //<button class="btn btn-danger transaction__remove" data-id="18jz9sc2ckmc3loze">
 
   /**
    * С помощью Account.get() получает название счёта и отображает
@@ -112,9 +109,9 @@ class TransactionsPage {
       return;
     }
     this.lastOptions = options;
+    //TransactionsPage.lastOptions = options;
     this.renderTransactions([]); // что бы не задваивал транзакции на странице
     Account.get(options, {}, (response) => {
-      
       this.renderTitle(response.data.name);
     });
     let data = { account_id: options };
@@ -131,16 +128,15 @@ class TransactionsPage {
   clear() {
     this.renderTransactions([]);
     this.renderTitle("Название счёта");
-    //this.lastOptions = null;
+    this.lastOptions = null;
   }
 
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name) {
-    
     let elementNameScore = document.querySelector(".content-title");
-    name === undefined? name = "Название счёта" : name = name;
+    //name === undefined ? (name = "Название счёта") : (name = name);
     elementNameScore.textContent = name;
   }
 

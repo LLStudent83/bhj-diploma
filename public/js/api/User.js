@@ -10,7 +10,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-    localStorage.setItem("user", JSON.stringify(user)); //user = { id: 12, name: 'Vlad'};
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
   /**
@@ -26,8 +26,7 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    let user = JSON.parse(localStorage.getItem("user"));
-    return user;
+    return JSON.parse(localStorage.getItem("user"));
   }
 
   /**
@@ -41,17 +40,11 @@ class User {
         return;
       }
       if (response.success) {
-        let user = {
-          id: response.user.id,
-          name: response.user.name,
-        };
-        User.setCurrent(user);
-      }
-      if (!response.success) {
+        User.setCurrent(response.user);
+      } else {
         User.unsetCurrent();
-        throw (response.error);
       }
-      callback(); //Вызываю callback который находится в методе App.initUser
+      callback(response); //Вызываю callback который находится в методе App.initUser
     });
   }
 
@@ -65,13 +58,9 @@ class User {
     // data = {email: 'test@test.ru', password: 'abracadabra'}
     createRequest(data, "POST", User.URL + "/login", (err, response) => {
       if (response.success) {
-        let user = {
-          id: response.user.id,
-          name: response.user.name,
-        };
-        User.setCurrent(user);
+        User.setCurrent(response.user);
       } else {
-        alert(response.error, "ошибка из login")
+        alert(response.error, "ошибка из login");
       }
       callback(response);
     });

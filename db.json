@@ -6,23 +6,32 @@
       "password": "123",
       "id": "18jz9s8jgklewxpn0",
       "isAuthorized": true
+    },
+    {
+      "name": "Дмитрий Пригульнов",
+      "email": "prigulnov@mail.ru",
+      "password": "789",
+      "id": "18jz9smzwkmm7zubc",
+      "isAuthorized": false
+    },
+    {
+      "name": "vova",
+      "email": "dima120683@gmail.com",
+      "password": "147",
+      "id": "18jz9sol4kmoyrnni",
+      "isAuthorized": false
     }
   ],
   "accounts": [
     {
-      "name": "Коплю на машину",
-      "user_id": "18jz9s8jgklewxpn0",
-      "id": "18jz9skxckmhlal7d"
-    },
-    {
-      "name": "мой счет",
-      "user_id": "18jz9s8jgklewxpn0",
-      "id": "18jz9sn6wkmhlwvm7"
-    },
-    {
       "name": "Семейный бюджет",
       "user_id": "18jz9s8jgklewxpn0",
       "id": "18jz9s2lokmhvbg88"
+    },
+    {
+      "name": "Дмитрий Пригульнов",
+      "user_id": "18jz9s8jgklewxpn0",
+      "id": "18jz9slp4kmm80klj"
     }
   ],
   "transactions": [
@@ -611,14 +620,6 @@
       "created_at": "2021-03-20T10:27:37.888Z"
     },
     {
-      "id": "18jz9sksskmhlx35a",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 10000,
-      "account_id": "18jz9sn6wkmhlwvm7",
-      "created_at": "2021-03-20T10:47:13.965Z"
-    },
-    {
       "id": "18jz9slmckmhnlufj",
       "type": "INCOME",
       "name": "Зарплата",
@@ -635,14 +636,6 @@
       "created_at": "2021-03-20T12:04:31.597Z"
     },
     {
-      "id": "18jz9snvkkmhp3r15",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 100,
-      "account_id": "18jz9sn6wkmhlwvm7",
-      "created_at": "2021-03-20T12:16:23.704Z"
-    },
-    {
       "id": "18jz9sfmkkmhqj8py",
       "type": "INCOME",
       "name": "Зарплата",
@@ -657,14 +650,6 @@
       "sum": 100,
       "account_id": "18jz9s8zskmhlabg1",
       "created_at": "2021-03-20T13:08:18.700Z"
-    },
-    {
-      "id": "18jz9slcckmhrhlwm",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 100,
-      "account_id": "18jz9sn6wkmhlwvm7",
-      "created_at": "2021-03-20T13:23:09.477Z"
     },
     {
       "id": "18jz9sll0kmhrnfou",
@@ -699,20 +684,60 @@
       "created_at": "2021-03-20T13:28:51.437Z"
     },
     {
-      "id": "18jz9sjm8kmio2edw",
+      "id": "18jz9s4mskmipfxah",
       "type": "INCOME",
       "name": "Зарплата",
       "sum": 100,
       "account_id": "18jz9s2lokmhvbg88",
-      "created_at": "2021-03-21T04:35:07.219Z"
+      "created_at": "2021-03-21T05:13:37.864Z"
     },
     {
-      "id": "18jz9sbkgkmiotp9y",
+      "id": "18jz9shtckmiqsotb",
       "type": "INCOME",
       "name": "Зарплата",
       "sum": 100,
-      "account_id": "18jz9skxckmhlal7d",
-      "created_at": "2021-03-21T04:56:21.045Z"
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-21T05:51:33.022Z"
+    },
+    {
+      "id": "18jz9sklckmiqtok9",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-21T05:52:19.352Z"
+    },
+    {
+      "id": "18jz9s88wkmm80r29",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9slp4kmm80klj",
+      "created_at": "2021-03-23T16:17:01.184Z"
+    },
+    {
+      "id": "18jz9so08kmrtvnes",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-27T14:27:45.603Z"
+    },
+    {
+      "id": "18jz9s390kmrtvxie",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9senwkmm6t9sx",
+      "created_at": "2021-03-27T14:27:58.693Z"
+    },
+    {
+      "id": "18jz9soi4kmrtw6mb",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9senwkmm6t9sx",
+      "created_at": "2021-03-27T14:28:10.498Z"
     }
   ]
 }
