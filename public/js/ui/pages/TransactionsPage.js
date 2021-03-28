@@ -13,7 +13,7 @@ class TransactionsPage {
    * */
   constructor(element) {
     if (!element) {
-      throw new Error("переданый в AsyncForm элемент не существует")
+      throw new Error("переданый в AsyncForm элемент не существует");
     }
     this.element = element;
     this.registerEvents();
@@ -63,7 +63,7 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if (!this.lastOptions) {
+    /*if (!this.lastOptions) {
       return;
     } else {
       let message = confirm("Вы действительно хотите удалить счет?");
@@ -71,6 +71,20 @@ class TransactionsPage {
         let accountActive = document.querySelector(".account.active"); //main-header
         let id = accountActive.getAttribute("data-id");
         Account.remove(id, User.current(), (response) => {
+          if (response.success) {
+            App.update();
+          }
+        });
+        this.clear();
+      }
+    }*/
+
+    if (!this.lastOptions) {
+      return;
+    } else {
+      let message = confirm("Вы действительно хотите удалить счет?");
+      if (message) {
+        Account.remove(this.lastOptions, User.current(), (response) => {
           if (response.success) {
             App.update();
           }
@@ -136,7 +150,7 @@ class TransactionsPage {
    * */
   renderTitle(name) {
     let elementNameScore = document.querySelector(".content-title");
-    //name === undefined ? (name = "Название счёта") : (name = name);
+    name = name || "Название счета";
     elementNameScore.textContent = name;
   }
 
@@ -164,7 +178,7 @@ class TransactionsPage {
    * */
   getTransactionHTML(item) {
     let html = `
-    <div class="transaction transaction_${item.type} row">
+    <div class="transaction transaction_${item.type.toLowerCase()} row">
     <div class="col-md-7 transaction__details">
       <div class="transaction__icon">
           <span class="fa fa-money fa-2x"></span>

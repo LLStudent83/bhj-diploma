@@ -36,8 +36,6 @@ class AccountsWidget {
       if (event.target === elemNewAccount) {
         App.getModal("createAccount").open();
       } else {
-        //console.log("Меня кликнули", event);
-
         bindOnSelectAccount(event.target);
       }
     });

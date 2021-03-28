@@ -28,28 +28,6 @@ class CreateTransactionForm extends AsyncForm {
       }
       elemAccountsList.insertAdjacentHTML("beforeEnd", html);
     });
-
-    /*Account.list(User.current(), (response) => {
-      if (this.element === document.querySelector("#new-income-form")) { //  доход
-        document.querySelector("#income-accounts-list").innerHTML = "";
-        for (let item of response.data) {
-          let html = `<option value="${item.id}">${item.name}</option>`;
-          let elemAccountsList = this.element.querySelector(
-            "#income-accounts-list"
-          );
-          elemAccountsList.insertAdjacentHTML("beforeEnd", html);
-        }
-      } else {
-        document.querySelector("#expense-accounts-list").innerHTML = "";
-        for (let item of response.data) {
-          let html = `<option value="${item.id}">${item.name}</option>`;
-          let elemAccountsList = this.element.querySelector(
-            "#expense-accounts-list"
-          );
-          elemAccountsList.insertAdjacentHTML("beforeEnd", html);
-        }
-      }
-    });*/
   }
 
   /**

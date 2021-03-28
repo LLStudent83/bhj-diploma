@@ -22,18 +22,7 @@
       "isAuthorized": false
     }
   ],
-  "accounts": [
-    {
-      "name": "Семейный бюджет",
-      "user_id": "18jz9s8jgklewxpn0",
-      "id": "18jz9s2lokmhvbg88"
-    },
-    {
-      "name": "Дмитрий Пригульнов",
-      "user_id": "18jz9s8jgklewxpn0",
-      "id": "18jz9slp4kmm80klj"
-    }
-  ],
+  "accounts": [],
   "transactions": [
     {
       "id": "18jz9sffsklzbnfov",
@@ -684,30 +673,6 @@
       "created_at": "2021-03-20T13:28:51.437Z"
     },
     {
-      "id": "18jz9s4mskmipfxah",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 100,
-      "account_id": "18jz9s2lokmhvbg88",
-      "created_at": "2021-03-21T05:13:37.864Z"
-    },
-    {
-      "id": "18jz9shtckmiqsotb",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 100,
-      "account_id": "18jz9s2lokmhvbg88",
-      "created_at": "2021-03-21T05:51:33.022Z"
-    },
-    {
-      "id": "18jz9sklckmiqtok9",
-      "type": "INCOME",
-      "name": "Зарплата",
-      "sum": 100,
-      "account_id": "18jz9s2lokmhvbg88",
-      "created_at": "2021-03-21T05:52:19.352Z"
-    },
-    {
       "id": "18jz9s88wkmm80r29",
       "type": "INCOME",
       "name": "Зарплата",
@@ -738,6 +703,46 @@
       "sum": 100,
       "account_id": "18jz9senwkmm6t9sx",
       "created_at": "2021-03-27T14:28:10.498Z"
+    },
+    {
+      "id": "18jz9sd78kmrw7ltb",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-27T15:33:02.638Z"
+    },
+    {
+      "id": "18jz9somckmrxeiok",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9s2lokmhvbg88",
+      "created_at": "2021-03-27T16:06:24.787Z"
+    },
+    {
+      "id": "18jz9sni0kmsp8xkf",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9se4skmsp8rd7",
+      "created_at": "2021-03-28T05:05:53.390Z"
+    },
+    {
+      "id": "18jz9ssuokmsphzef",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 10000,
+      "account_id": "18jz9spjwkmsphu09",
+      "created_at": "2021-03-28T05:12:55.670Z"
+    },
+    {
+      "id": "18jz9sqwskmspvo6i",
+      "type": "INCOME",
+      "name": "Зарплата",
+      "sum": 100,
+      "account_id": "18jz9sgb8kmspvcim",
+      "created_at": "2021-03-28T05:23:34.313Z"
     }
   ]
 }

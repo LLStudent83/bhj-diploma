@@ -15,40 +15,10 @@ const createRequest = (data = {}, metod, URL, callback) => {
         URL += `${key}=${data[key]}&`;
       }
     }
-    // try {
-    //   xhr.open(metod, URL, true);
-    //   xhr.onload = () => {
-    //     if (xhr.status === 200){
-    //     callback(null, xhr.response);
-    //     }
-    //   };
-    //   xhr.onerror = (err) => {
-    //     callback(err, xhr.response);
-    //     console.log("Печатаем xhr ошибка", err);
-    //   };
-    // } catch {
-    //   // перехват сетевой ошибки
-    //   callback(e);
-    // }
   } else {
-    
     for (let key in data) {
       form.append(key, data[key]);
     }
-    // try {
-    //   xhr.open(metod, URL, true);
-    //   xhr.onload = () => {
-    //     if (xhr.status === 200) {
-    //       callback(null, xhr.response);
-    //     }
-    //   };
-    //   xhr.onerror = () => {
-    //     callback(err, xhr.response);
-    //   };
-    // } catch (e) {
-    //   // перехват сетевой ошибки
-    //   callback(e);
-    // }
   }
   try {
     xhr.open(metod, URL, true);
