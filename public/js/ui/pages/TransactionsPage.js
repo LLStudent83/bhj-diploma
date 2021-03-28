@@ -63,22 +63,7 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    /*if (!this.lastOptions) {
-      return;
-    } else {
-      let message = confirm("Вы действительно хотите удалить счет?");
-      if (message) {
-        let accountActive = document.querySelector(".account.active"); //main-header
-        let id = accountActive.getAttribute("data-id");
-        Account.remove(id, User.current(), (response) => {
-          if (response.success) {
-            App.update();
-          }
-        });
-        this.clear();
-      }
-    }*/
-
+   
     if (!this.lastOptions) {
       return;
     } else {
@@ -148,9 +133,9 @@ class TransactionsPage {
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
-  renderTitle(name) {
+  renderTitle(name = "Название счета") {
     let elementNameScore = document.querySelector(".content-title");
-    name = name || "Название счета";
+    //name = name || "Название счета";
     elementNameScore.textContent = name;
   }
 

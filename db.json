@@ -22,7 +22,13 @@
       "isAuthorized": false
     }
   ],
-  "accounts": [],
+  "accounts": [
+    {
+      "name": "мой счет",
+      "user_id": "18jz9s8jgklewxpn0",
+      "id": "18jz9suk4kmt74ps1"
+    }
+  ],
   "transactions": [
     {
       "id": "18jz9sffsklzbnfov",
